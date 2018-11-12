@@ -18,10 +18,10 @@ Route::get('/login',function(){
    return view('login');
 });
 Route::get('/register',function(){
-    return view('tables');
+    return view('index');
 });
-Route::get('/regi',function(){
-    return view('aa');
+Route::get('/customers',function(){
+    return view('tables');
 });
 
 

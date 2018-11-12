@@ -22,7 +22,9 @@
                                     </label>
                                 </div>
                                 <!-- Change this to a button or input when using this as a form -->
-                                <a href="index.html" class="btn btn-lg btn-success btn-block">Login</a>
+                                <input type="submit" value="login" class="btn btn-lg btn-success btn-block">
+                                <a href="/register" class="btn btn-lg btn-primary btn-block">Register</a>
+                                <a href="/forgot">Forgot Password?</a>
                             </fieldset>
                         </form>
                     </div>
