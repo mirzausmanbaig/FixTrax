@@ -3,22 +3,21 @@
 namespace App\Model;
 
 use Illuminate\Database\Eloquent\Model;
-use App\Model\Address as Address;
-use App\Model\Company as Company;
-use App\Model\Vehicle as Vehicle;
+
 
 class Location extends Model
 {
     protected $table = "location";
+    protected $guarded = [];
 
     public function company(){
-        return $this->belongsTo('Company','company_id','id');
+        return $this->belongsTo('\App\Model\Address','company_id','id');
     }
 
     public function address(){
-        return $this->hasOne('Address','id','address_id');
+        return $this->hasOne('\App\Model\Company ','id','address_id');
     }
     public function vehicle(){
-        return $this->hasMany('vehicle','location_id','id');
+        return $this->hasMany('\App\Model\Vehicle','location_id','id');
     }
 }

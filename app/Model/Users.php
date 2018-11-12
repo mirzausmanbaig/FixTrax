@@ -5,7 +5,7 @@ namespace App\Model;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use App\Model\Company as Company;
+
 
 class Users extends Authenticatable
 {
@@ -13,7 +13,7 @@ class Users extends Authenticatable
     protected $guarded = [];
 
 public function company(){
-    return $this->hasOne('Company','id','company_id');
+    return $this->hasOne('\App\Model\Company','id','company_id');
 }
 
 }
