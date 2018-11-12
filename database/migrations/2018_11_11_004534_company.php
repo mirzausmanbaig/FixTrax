@@ -15,7 +15,7 @@ class Company extends Migration
     {
         Schema::create('Company', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name');
+            $table->string('company_name');
             $table->string('address_id');
             $table->timestamps();
         });

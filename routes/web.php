@@ -14,14 +14,14 @@
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('/login',function(){
-   return view('login');
-});
-Route::get('/register',function(){
-    return view('index');
-});
-Route::get('/customers',function(){
-    return view('tables');
-});
+Route::get('/login','UsersController@login');
+Route::get('/register','UsersController@register');
+
+Route::get('/vehicles','VehicleController@index');
+
+Route::get('/customers', 'CustomerController@index');
+
+Route::get('/locations', 'LocationController@index');
+
 
 

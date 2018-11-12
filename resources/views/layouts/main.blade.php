@@ -32,13 +32,16 @@
     <!-- Custom Fonts -->
     <link href="/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
+    @yield('css')
+
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
-    @yield('css')
+
+
 </head>
 
 <body>
@@ -54,7 +57,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index.html">FixTrax</a>
+                <a class="navbar-brand" href="/customers">FixTrax</a>
             </div>
             <!-- /.navbar-header -->
 
@@ -65,9 +68,7 @@
                         <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
                     </a>
                     <ul class="dropdown-menu dropdown-user">
-                        <li><a href="#"><i class="fa fa-user fa-fw"></i> User Profile</a>
-                        </li>
-                        <li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>
+                        <li><a href="/customer"><i class="fa fa-user fa-fw"></i> {//{ Auth::user()->name }}</a>
                         </li>
                         <li class="divider"></li>
                         <li><a href="login.html"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
@@ -93,7 +94,7 @@
                             <a href="/locations"><i class="fa fa-map-marker fa-fw"></i> Locations</a>
                         </li>
                         <li>
-                            <a href="/Users"><i class="fa fa-user fa-fw"></i> Users</a>
+                            <a href="/users"><i class="fa fa-user fa-fw"></i> Users</a>
                         </li>
                         <li>
                             <a href="/Settings"><i class="fa fa-wrench fa-fw"></i> Settings</span></a>

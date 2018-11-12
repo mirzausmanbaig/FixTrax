@@ -1,21 +1,14 @@
 @extends('layouts.main')
-    @section('css')
-        <style>
-            #pan{
-                background-color: darkred;
-            }
-        </style>
-    @endsection
         @section('content')
             <div class="row">
                 <div class="col-lg-12">
-                    <h1 class="page-header">Customers
-                    <a class="btn btn-warning btn-labelled pull-right">
+                    <h1 class="page-header">Vehicles
+                        <a class="btn btn-warning pull-right">
                         <span class="btn-label">
                             <i class="fa fa-plus-circle"></i>
                         </span>
-                        Add Customers
-                    </a>
+                            Add Vehicle
+                        </a>
                     </h1>
                 </div>
                 <!-- /.col-lg-12 -->
@@ -33,9 +26,11 @@
                                 <thead>
                                     <tr>
                                         <th></th>
-                                        <th>Name</th>
-                                        <th>Email</th>
-                                        <th>Phone Numbers</th>
+                                        <th>Year</th>
+                                        <th>Make</th>
+                                        <th>Model</th>
+                                        <th>Trim</th>
+                                        <th>Customer</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -43,6 +38,8 @@
                                         <td></td>
                                         <td>All others</td>
                                         <td>-</td>
+                                        <td class="center">-</td>
+                                        <td class="center">-</td>
                                         <td class="center">-</td>
                                     </tr>
                                 </tbody>

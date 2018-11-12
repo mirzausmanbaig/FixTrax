@@ -9,12 +9,12 @@
         @section('content')
             <div class="row">
                 <div class="col-lg-12">
-                    <h1 class="page-header">Customers
+                    <h1 class="page-header">Locations
                     <a class="btn btn-warning btn-labelled pull-right">
                         <span class="btn-label">
                             <i class="fa fa-plus-circle"></i>
                         </span>
-                        Add Customers
+                        Add Location
                     </a>
                     </h1>
                 </div>
@@ -34,16 +34,13 @@
                                     <tr>
                                         <th></th>
                                         <th>Name</th>
-                                        <th>Email</th>
-                                        <th>Phone Numbers</th>
+                                        <th>Address</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <tr class="gradeU">
                                         <td></td>
                                         <td>All others</td>
-                                        <td>-</td>
-                                        <td class="center">-</td>
                                     </tr>
                                 </tbody>
                             </table>
