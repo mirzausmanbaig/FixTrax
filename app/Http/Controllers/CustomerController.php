@@ -7,12 +7,12 @@ use Illuminate\Http\Request;
 class CustomerController extends Controller
 {
     public function index(){
-        return view('customers');
+        return view('customer.customers');
     }
     public function customerEdit(){
-        return view('customeredit');
+        return view('customer.customerEdit');
     }
     public function customerAdd(){
-        return view('customeradd');
+        return view('customer.customerAdd');
     }
 }

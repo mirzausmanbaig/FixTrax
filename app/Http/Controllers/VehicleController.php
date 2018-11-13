@@ -7,12 +7,16 @@ use Illuminate\Http\Request;
 class VehicleController extends Controller
 {
    public function index(){
-        return view('vehicles');
+        return view('vehicle.vehicles');
    }
    public function vehicleCustomer(){
-       return view('vehiclecustomer');
+       return view('vehicle.vehicleCustomer');
    }
    public function vehicleEdit(){
-       return view('vehicleedit');
+       return view('vehicle.vehicleEdit');
    }
+    public function vehicleCustomerAdd(){
+        return view('vehicle.vehicleCustomerAdd');
+    }
+
 }

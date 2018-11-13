@@ -21,6 +21,7 @@ Route::get('/users','UsersController@index');
 Route::get('/vehicles','VehicleController@index');
 Route::get('/vehicle/customer', 'VehicleController@vehicleCustomer');
 Route::get('/vehicle/edit','VehicleController@vehicleEdit');
+Route::get('/vehicle/customer/add','VehicleController@vehicleCustomerAdd');
 
 Route::get('/customers', 'CustomerController@index');
 Route::get('/customer/edit', 'CustomerController@customerEdit');

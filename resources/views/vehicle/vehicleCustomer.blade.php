@@ -2,8 +2,8 @@
         @section('content')
             <div class="row">
                 <div class="col-lg-12">
-                    <h1 class="page-header">Vehicles
-                        <a class="btn btn-warning pull-right">
+                    <h1 class="page-header">Customer's Vehicles
+                        <a class="btn btn-warning pull-right" href="/vehicle/customer/add">
                         <span class="btn-label">
                             <i class="fa fa-plus-circle"></i>
                         </span>
