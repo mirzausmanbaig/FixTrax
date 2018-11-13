@@ -11,11 +11,11 @@ class Location extends Model
     protected $guarded = [];
 
     public function company(){
-        return $this->belongsTo('\App\Model\Address','company_id','id');
+        return $this->belongsTo('\App\Model\Company','company_id','id');
     }
 
     public function address(){
-        return $this->hasOne('\App\Model\Company ','id','address_id');
+        return $this->hasOne('\App\Model\Address','id','address_id');
     }
     public function vehicle(){
         return $this->hasMany('\App\Model\Vehicle','location_id','id');

@@ -12,4 +12,7 @@ class UsersController extends Controller
     public function register(){
         return view('register');
     }
+    public function index(){
+        return view('users');
+    }
 }

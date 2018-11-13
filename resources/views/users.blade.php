@@ -1,14 +1,21 @@
 @extends('layouts.main')
+    @section('css')
+        <style>
+            #pan{
+                background-color: darkred;
+            }
+        </style>
+    @endsection
         @section('content')
             <div class="row">
                 <div class="col-lg-12">
-                    <h1 class="page-header">Vehicles
-                        <a class="btn btn-warning pull-right">
+                    <h1 class="page-header">Users
+                    <a class="btn btn-warning btn-labelled pull-right">
                         <span class="btn-label">
                             <i class="fa fa-plus-circle"></i>
                         </span>
-                            Add Vehicle
-                        </a>
+                        Add Users
+                    </a>
                     </h1>
                 </div>
                 <!-- /.col-lg-12 -->
@@ -26,17 +33,14 @@
                                 <thead>
                                     <tr>
                                         <th width="7%"></th>
-                                        <th>Year</th>
-                                        <th>Make</th>
-                                        <th>Model</th>
-                                        <th>Trim</th>
-                                        <th>Customer</th>
+                                        <th>Name</th>
+                                        <th>Email</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr class="gradeU">
+                                    <tr class="">
                                         <td>
-                                            <a href="/vehicle/edit" class="btn btn-primary btn-xs">
+                                            <a href="#" class="btn btn-primary btn-xs">
                                                 <i class="fa fa-pencil"></i>
                                             </a>
                                             <a href="#" class="btn btn-danger btn-xs">
@@ -45,9 +49,6 @@
                                         </td>
                                         <td>All others</td>
                                         <td>-</td>
-                                        <td class="center">-</td>
-                                        <td class="center">-</td>
-                                        <td class="center">-</td>
                                     </tr>
                                 </tbody>
                             </table>

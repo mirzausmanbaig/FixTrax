@@ -2,7 +2,7 @@
         @section('content')
             <div class="row">
                 <div class="col-lg-12">
-                    <h1 class="page-header">Vehicles
+                    <h1 class="page-header">{//{Auth::user()->name}}'s Vehicles
                         <a class="btn btn-warning pull-right">
                         <span class="btn-label">
                             <i class="fa fa-plus-circle"></i>
@@ -36,7 +36,7 @@
                                 <tbody>
                                     <tr class="gradeU">
                                         <td>
-                                            <a href="/vehicle/edit" class="btn btn-primary btn-xs">
+                                            <a href="#" class="btn btn-primary btn-xs">
                                                 <i class="fa fa-pencil"></i>
                                             </a>
                                             <a href="#" class="btn btn-danger btn-xs">

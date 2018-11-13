@@ -16,12 +16,19 @@ Route::get('/', function () {
 });
 Route::get('/login','UsersController@login');
 Route::get('/register','UsersController@register');
+Route::get('/users','UsersController@index');
 
 Route::get('/vehicles','VehicleController@index');
+Route::get('/vehicle/customer', 'VehicleController@vehicleCustomer');
+Route::get('/vehicle/edit','VehicleController@vehicleEdit');
 
 Route::get('/customers', 'CustomerController@index');
+Route::get('/customer/edit', 'CustomerController@customerEdit');
+Route::get('/customer/add', 'CustomerController@customerAdd');
 
 Route::get('/locations', 'LocationController@index');
+
+Route::get('/settings', 'CompanyController@index');
 
 
 

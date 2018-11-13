@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>SB Admin 2 - Bootstrap Admin Theme</title>
+    <title>Usman's FixTrax</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="/css/bootstrap.min.css" rel="stylesheet">
@@ -57,7 +57,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="/customers">FixTrax</a>
+                <a class="navbar-brand" href="/users">FixTrax</a>
             </div>
             <!-- /.navbar-header -->
 
@@ -97,7 +97,7 @@
                             <a href="/users"><i class="fa fa-user fa-fw"></i> Users</a>
                         </li>
                         <li>
-                            <a href="/Settings"><i class="fa fa-wrench fa-fw"></i> Settings</span></a>
+                            <a href="/settings"><i class="fa fa-wrench fa-fw"></i> Settings</span></a>
                         </li>
 
                     </ul>

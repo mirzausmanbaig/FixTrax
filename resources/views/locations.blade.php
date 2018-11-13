@@ -32,14 +32,27 @@
                             <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example">
                                 <thead>
                                     <tr>
-                                        <th></th>
+                                        <th width="4%"></th>
                                         <th>Name</th>
                                         <th>Address</th>
+                                        <th>Address 2</th>
+                                        <th>City</th>
+                                        <th>State</th>
+                                        <th>Zip Code</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr class="gradeU">
-                                        <td></td>
+                                    <tr class="">
+                                        <td>
+                                            <a href="#" class="btn btn-primary btn-xs">
+                                                <i class="fa fa-pencil"></i>
+                                            </a>
+                                        </td>
+                                        <td>All others</td>
+                                        <td>All others</td>
+                                        <td>All others</td>
+                                        <td>All others</td>
+                                        <td>All others</td>
                                         <td>All others</td>
                                     </tr>
                                 </tbody>
