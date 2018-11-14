@@ -18,7 +18,7 @@
                                 </div>
                                 <!-- Change this to a button or input when using this as a form -->
                                 <input type="submit" value="login" class="btn btn-lg btn-success btn-block">
-                                <a href="/register" class="btn btn-lg btn-primary btn-block">Register</a>
+                                <a href="/register1" class="btn btn-lg btn-primary btn-block">Register</a>
                                 <a href="/forgot">Forgot Password?</a>
                             </fieldset>
                         </form>

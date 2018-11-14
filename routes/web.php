@@ -14,8 +14,9 @@
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('/login','UsersController@login');
-Route::get('/register','UsersController@register');
+Route::get('/login1','UsersController@login');
+Route::get('/register1','UsersController@register');
+Route::post('/register1','UserController@postRegister');
 Route::get('/users','UsersController@index');
 
 Route::get('/vehicles','VehicleController@index');
@@ -33,3 +34,7 @@ Route::get('/settings', 'CompanyController@index');
 
 
 
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

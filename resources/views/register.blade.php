@@ -8,7 +8,7 @@
                         <h3 class="panel-title">Please Sign Up</h3>
                     </div>
                     <div class="panel-body">
-                        <form role="form">
+                        <form role="form" action="post" method="/register1">
                             <fieldset>
                                 <legend>User Information</legend>
                                 <div class="form-group">
