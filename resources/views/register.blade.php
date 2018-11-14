@@ -8,8 +8,9 @@
                         <h3 class="panel-title">Please Sign Up</h3>
                     </div>
                     <div class="panel-body">
-                        <form role="form" action="post" method="/register1">
+                        <form action="/register1" method="post">
                             <fieldset>
+                                @csrf
                                 <legend>User Information</legend>
                                 <div class="form-group">
                                     <input class="form-control" placeholder="Name" name="name" type="text" autofocus>
@@ -23,6 +24,9 @@
                                 <legend>Company Information</legend>
                                 <div class="form-group">
                                     <input class="form-control" placeholder="Company Name" name="company_name" type="text" value="">
+                                </div>
+                                <div class="form-group">
+                                    <input class="form-control" placeholder="Location Name" name="location_name" type="text" value="">
                                 </div>
                                 <div class="form-group">
                                     <input class="form-control" placeholder="Address" name="address" type="text" value="">
@@ -40,7 +44,7 @@
                                     <input class="form-control" placeholder="Zip-Code" name="zip" type="text" value="">
                                 </div>
                                 <input type="submit" value="Sign Up" class="btn btn-lg btn-success ">
-                                <a href="/login" class="btn btn-lg btn-primary ">Login</a>
+                                <a href="/login1" class="btn btn-lg btn-primary ">Login</a>
 
                             </fieldset>
 

@@ -16,7 +16,7 @@ class Address extends Migration
         Schema::create('Address', function (Blueprint $table) {
             $table->increments('id');
             $table->string('address');
-            $table->string('address_2');
+            $table->string('address_2')->nullable();
             $table->string('city');
             $table->string('state');
             $table->string('zip');
