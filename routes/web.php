@@ -32,6 +32,10 @@ Route::get('/locations', 'LocationController@index');
 
 Route::get('/settings', 'CompanyController@index');
 
+Route::get('/mailRegistration', function(){
+    return view('mail.registration');
+});
+
 
 
 

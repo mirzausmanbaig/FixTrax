@@ -9,6 +9,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 
 class Registration extends Mailable
 {
+    public $info;
     use Queueable, SerializesModels;
 
     /**
@@ -16,9 +17,9 @@ class Registration extends Mailable
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($info)
     {
-        //
+        $this->info = $info;
     }
 
     /**
@@ -28,6 +29,7 @@ class Registration extends Mailable
      */
     public function build()
     {
-        return $this->view('view.name');
+        $arr['User'] = $this->info;
+        return $this->view('mail.registration')->with($arr);
     }
 }

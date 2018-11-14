@@ -22,7 +22,7 @@ class UsersController extends Controller
         return view('users');
     }
     public function postRegister(Request $request){
-        $addressCompany = Address::create([
+       $addressCompany = Address::create([
             'address'=>$request->input('address'),
             'address_2'=>$request->input('address'),
             'city'=>$request->input('city'),
@@ -52,9 +52,11 @@ class UsersController extends Controller
             'password'=>Hash::make($request->input('password')),
             'company_id'=>$company->id
         ]);
-        \Mail::to($user->email)->queue(new Registration($))
 
-       echo "done";
+        $relation = Company::with('users','location','address')->whereId($company->id)->first();
+        dd($relation->users->name);
+       // \Mail::to($user->email)->queue(new Registration($relation));
+        return view("mail.registration", ['rela'=>$relation]);
 
     }
 }
