@@ -57,15 +57,15 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="/register1">FixTrax</a>
+            <a class="navbar-brand" href="/register!">FixTrax</a>
         </div>
         <!-- /.navbar-header -->
     </nav>
 
     <div id="page-wrapper">
         <h1>Thank You!! for your registration.</h1><br/>
-
-            name =  {{$user->company->company_name}}
+        <a>Resend Verification</a><br/>
+        <input class="btn btn-danger" type="submit" name="logout">
 
     </div>
     <!-- /#page-wrapper -->

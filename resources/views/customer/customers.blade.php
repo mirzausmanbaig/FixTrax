@@ -39,22 +39,26 @@
                                     </tr>
                                 </thead>
                                 <tbody>
+                                @foreach($customers as $data)
                                     <tr class="gradeU">
                                         <td>
-                                            <a href="/customer/edit" class="btn btn-primary btn-xs">
+                                            <a href="/customer/edit/{{$data->address_id}}" class="btn btn-primary btn-xs">
                                                 <i class="fa fa-pencil"></i>
                                             </a>
-                                            <a href="/vehicle/customer" class="btn btn-warning btn-xs">
+                                            <a href="/vehicle/customer/{{$data->id}}" class="btn btn-warning btn-xs">
                                                 <i class="fa fa-car"></i>
                                             </a>
-                                            <a href="#" class="btn btn-danger btn-xs">
+                                            <a href="/delete/{{$data->address_id}}" class="btn btn-danger btn-xs">
                                                 <i class="fa fa-trash"></i>
                                             </a>
                                         </td>
-                                        <td>All others</td>
-                                        <td>-</td>
-                                        <td class="center">-</td>
+
+                                        <td>{{$data->name}}</td>
+                                        <td>{{$data->email}}</td>
+                                        <td>{{$data->phone_number}}</td>
+
                                     </tr>
+                                @endforeach
                                 </tbody>
                             </table>
                             <!-- /.table-responsive -->

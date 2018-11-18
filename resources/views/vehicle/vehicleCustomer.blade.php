@@ -2,8 +2,8 @@
         @section('content')
             <div class="row">
                 <div class="col-lg-12">
-                    <h1 class="page-header">Customer's Vehicles
-                        <a class="btn btn-warning pull-right" href="/vehicle/customer/add">
+                    <h1 class="page-header">{{$vehicle->customer->name}}'s Vehicles
+                        <a class="btn btn-warning pull-right" href="/vehicle/add/{{$vehicle->customer_id}}">
                         <span class="btn-label">
                             <i class="fa fa-plus-circle"></i>
                         </span>
@@ -36,18 +36,18 @@
                                 <tbody>
                                     <tr class="gradeU">
                                         <td>
-                                            <a href="/vehicle/edit" class="btn btn-primary btn-xs">
+                                            <a href="/vehicle/customer/edit/{{$vehicle->id}}" class="btn btn-primary btn-xs">
                                                 <i class="fa fa-pencil"></i>
                                             </a>
                                             <a href="#" class="btn btn-danger btn-xs">
                                                 <i class="fa fa-trash"></i>
                                             </a>
                                         </td>
-                                        <td>All others</td>
-                                        <td>-</td>
-                                        <td class="center">-</td>
-                                        <td class="center">-</td>
-                                        <td class="center">-</td>
+                                        <td>{{$vehicle->year}}</td>
+                                        <td>{{$vehicle->make}}</td>
+                                        <td>{{$vehicle->model}}</td>
+                                        <td>{{$vehicle->trim}}</td>
+                                        <td>{{$vehicle->customer->name}}</td>
                                     </tr>
                                 </tbody>
                             </table>

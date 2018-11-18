@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Mail\Registration;
 use App\Model\Address;
 use App\Model\Company;
+use App\Model\Customer;
 use App\Model\Location;
 use App\Model\Users;
 use Illuminate\Http\Request;
@@ -53,10 +54,9 @@ class UsersController extends Controller
             'company_id'=>$company->id
         ]);
 
-        $relation = Company::with('users','location','address')->whereId($company->id)->first();
-        dd($relation->users->name);
-       // \Mail::to($user->email)->queue(new Registration($relation));
-        return view("mail.registration", ['rela'=>$relation]);
+       //\Mail::to($user->email)->queue(new Registration($user, $company, $location));
+       auth()->login($user);
+       return redirect('/customers');
 
     }
 }

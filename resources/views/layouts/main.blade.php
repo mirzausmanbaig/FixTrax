@@ -68,7 +68,7 @@
                         <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
                     </a>
                     <ul class="dropdown-menu dropdown-user">
-                        <li><a href="/customer"><i class="fa fa-user fa-fw"></i> {//{ Auth::user()->name }}</a>
+                        <li><a href="/customer"><i class="fa fa-user fa-fw"></i> {{auth()->user()->name}}</a>
                         </li>
                         <li class="divider"></li>
                         <li><a href="login.html"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
@@ -88,7 +88,7 @@
                             <a href="/customers"><i class="fa fa-male fa-fw"></i> Customers</a>
                         </li>
                         <li>
-                            <a href="/vehicles"><i class="fa fa-car fa-fw"></i> Vehicles</span></a>
+                            <a href="/vehicles"><i class="fa fa-car fa-fw"></i> Vehicles</a>
                         </li>
                         <li>
                             <a href="/locations"><i class="fa fa-map-marker fa-fw"></i> Locations</a>
@@ -97,7 +97,7 @@
                             <a href="/users"><i class="fa fa-user fa-fw"></i> Users</a>
                         </li>
                         <li>
-                            <a href="/settings"><i class="fa fa-wrench fa-fw"></i> Settings</span></a>
+                            <a href="/settings"><i class="fa fa-wrench fa-fw"></i> Settings</a>
                         </li>
 
                     </ul>

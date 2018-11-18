@@ -14,8 +14,9 @@
                             <h3 class="panel-title">Add Customers</h3>
                         </div>
                         <div class="panel-body">
-                            <form role="form">
+                            <form method="post" action="/customer/add">
                                 <fieldset>
+                                    @csrf
                                     <legend>Add Customers</legend>
                                     <div class="form-group">
                                         <input class="form-control" placeholder="Name" name="name" type="text" value="">
@@ -26,22 +27,24 @@
                                     <div class="form-group">
                                         <input class="form-control" placeholder="E-Mail" name="email" type="email" value="">
                                     </div>
-                                    <legend>Add Vehicle</legend>
+                                    <legend>Address</legend>
                                     <div class="form-group">
-                                        <input class="form-control" placeholder="Year" name="year" type="text" value="">
+                                        <input class="form-control" placeholder="Address" name="address" type="text" value="">
                                     </div>
                                     <div class="form-group">
-                                        <input class="form-control" placeholder="Make" name="make" type="text" value="">
+                                        <input class="form-control" placeholder="Address 2" name="address_2" type="text" value="">
                                     </div>
                                     <div class="form-group">
-                                        <input class="form-control" placeholder="Model" name="model" type="email" value="">
+                                        <input class="form-control" placeholder="City" name="city" type="text" value="">
                                     </div>
                                     <div class="form-group">
-                                        <input class="form-control" placeholder="Trim" name="trim" type="email" value="">
+                                        <input class="form-control" placeholder="State" name="state" type="text" value="">
+                                    </div>
+                                    <div class="form-group">
+                                        <input class="form-control" placeholder="Zip" name="zip" type="text" value="">
                                     </div>
                                     <input type="submit" value="Add Customers" class="btn btn-lg btn-success pull-right">
-
-
+                                </fieldset>
                             </form>
                         </div>
                     </div>
