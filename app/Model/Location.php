@@ -17,7 +17,7 @@ class Location extends Model
     public function address(){
         return $this->hasOne('\App\Model\Address','id','address_id');
     }
-    public function vehicle(){
+    public function vehicles(){
         return $this->hasMany('\App\Model\Vehicle','location_id','id');
     }
 }

@@ -11,12 +11,8 @@ class VehicleController extends Controller
 {
    public function index(){
       $customer = Customer::all()->where('company_id','=',auth()->user()->company_id);
-//      foreach ($customer as $data){
-//          foreach($data->vehicles as $d){
-//             dd($d->year);
-//          }
-//      };
-        return view('vehicle.vehicles')->with(['customer'=>$customer]);
+      dd($customer);
+       return view('vehicle.vehicles')->with(['vehicle'=>$vehicle]);
    }
    public function vehicleCustomer($customer_id){
       $a = auth()->user()->company_id;

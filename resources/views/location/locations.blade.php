@@ -10,7 +10,7 @@
             <div class="row">
                 <div class="col-lg-12">
                     <h1 class="page-header">Locations
-                    <a class="btn btn-warning btn-labelled pull-right">
+                    <a class="btn btn-warning btn-labelled pull-right" href="/location/add">
                         <span class="btn-label">
                             <i class="fa fa-plus-circle"></i>
                         </span>

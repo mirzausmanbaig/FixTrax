@@ -40,6 +40,10 @@ Route::get('/customer/add', 'CustomerController@customerAdd');
 Route::post('/customer/add', 'CustomerController@customerRegister');
 
 Route::get('/locations', 'LocationController@index');
+Route::get('/location/edit/{id}', 'LocationController@locationEdit');
+Route::post('/location/edit/{id}', 'LocationController@locationPostEdit');
+Route::get('/location/add', 'LocationController@locationAdd');
+Route::post('/location/add', 'LocationController@locationPostAdd');
 
 Route::get('/settings', 'CompanyController@index');
 

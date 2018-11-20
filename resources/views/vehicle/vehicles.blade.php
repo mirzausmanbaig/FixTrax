@@ -34,7 +34,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                @foreach($customer as $data)
+                                @foreach($vehicle as $data)
                                     <tr class="gradeU">
                                         <td>
                                             <a href="/vehicle/edit/" class="btn btn-primary btn-xs">
@@ -44,10 +44,10 @@
                                                 <i class="fa fa-trash"></i>
                                             </a>
                                         </td>
-                                        <td>{{$data->vehicles->year}}</td>
-                                        <td>{{$data->vehicles->make}}</td>
-                                        <td>{{$data->vehicles->model}}</td>
-                                        <td>{{$data->vehicles->trim}}</td>
+                                        <td>{{$data->year}}</td>
+                                        <td>{{$data->make}}</td>
+                                        <td>{{$data->model}}</td>
+                                        <td>{{$data->trim}}</td>
                                         <td>{{$data->name}}</td>
                                     </tr>
                                 @endforeach
