@@ -34,21 +34,23 @@
                                     </tr>
                                 </thead>
                                 <tbody>
+                                @foreach($customer as $data)
                                     <tr class="gradeU">
                                         <td>
-                                            <a href="/vehicle/edit" class="btn btn-primary btn-xs">
+                                            <a href="/vehicle/edit/" class="btn btn-primary btn-xs">
                                                 <i class="fa fa-pencil"></i>
                                             </a>
                                             <a href="#" class="btn btn-danger btn-xs">
                                                 <i class="fa fa-trash"></i>
                                             </a>
                                         </td>
-                                        <td>All others</td>
-                                        <td>-</td>
-                                        <td class="center">-</td>
-                                        <td class="center">-</td>
-                                        <td class="center">-</td>
+                                        <td>{{$data->vehicles->year}}</td>
+                                        <td>{{$data->vehicles->make}}</td>
+                                        <td>{{$data->vehicles->model}}</td>
+                                        <td>{{$data->vehicles->trim}}</td>
+                                        <td>{{$data->name}}</td>
                                     </tr>
+                                @endforeach
                                 </tbody>
                             </table>
                             <!-- /.table-responsive -->

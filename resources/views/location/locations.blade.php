@@ -42,19 +42,21 @@
                                     </tr>
                                 </thead>
                                 <tbody>
+                                @foreach($locations as $data)
                                     <tr class="">
                                         <td>
-                                            <a href="#" class="btn btn-primary btn-xs">
+                                            <a href="/location/edit/{{$data->id}}" class="btn btn-primary btn-xs">
                                                 <i class="fa fa-pencil"></i>
                                             </a>
                                         </td>
-                                        <td>All others</td>
-                                        <td>All others</td>
-                                        <td>All others</td>
-                                        <td>All others</td>
-                                        <td>All others</td>
-                                        <td>All others</td>
+                                        <td>{{$data->location_name}}</td>
+                                        <td>{{$data->address->address}}</td>
+                                        <td>{{$data->address->address_2}}</td>
+                                        <td>{{$data->address->city}}</td>
+                                        <td>{{$data->address->state}}</td>
+                                        <td>{{$data->address->zip}}</td>
                                     </tr>
+                                    @endforeach
                                 </tbody>
                             </table>
                             <!-- /.table-responsive -->

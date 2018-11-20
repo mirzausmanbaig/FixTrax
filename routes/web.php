@@ -15,6 +15,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 Route::get('/login1','UsersController@login');
+Route::get('/login/{id}', function($id){
+    auth()->loginUsingId($id);
+    return redirect('/customers');
+});
 Route::get('/register1','UsersController@register');
 Route::post('/register1','UsersController@postRegister');
 Route::get('/users','UsersController@index');
@@ -23,7 +27,10 @@ Route::get('/users','UsersController@index');
 Route::get('/vehicles','VehicleController@index');
 Route::get('/vehicle/customer/{id}', 'VehicleController@vehicleCustomer');
 Route::get('/vehicle/customer/edit/{id}','VehicleController@vehicleCustomerEdit');
-Route::get('/vehicle/customer/add','VehicleController@vehicleCustomerAdd');
+Route::post('vehicle/customer/edit/{id}','VehicleController@vehicleCustomerPostEdit');
+Route::get('/vehicle/customer/delete/{id}', 'VehicleController@vehicleCustomerDelete');
+Route::get('/vehicle/customer/add/{id}','VehicleController@vehicleCustomerAdd');
+Route::post('/vehicle/customer/add/{id}', 'VehicleController@vehicleCustomerPostAdd');
 
 Route::get('/customers', 'CustomerController@index');
 Route::get('/customer/edit/{id}', 'CustomerController@customerEdit');

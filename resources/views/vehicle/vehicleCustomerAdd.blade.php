@@ -14,8 +14,9 @@
                             <h3 class="panel-title">Add Vehicle</h3>
                         </div>
                         <div class="panel-body">
-                            <form role="form">
+                            <form action="/vehicle/customer/add/{{$customer->id}}" method="post">
                                 <fieldset>
+                                    @csrf
                                     <div class="form-group">
                                         <input class="form-control" placeholder="Year" name="year" type="text" value="">
                                     </div>
@@ -23,10 +24,10 @@
                                         <input class="form-control" placeholder="Make" name="make" type="text" value="">
                                     </div>
                                     <div class="form-group">
-                                        <input class="form-control" placeholder="Model" name="model" type="email" value="">
+                                        <input class="form-control" placeholder="Model" name="model" type="text" value="">
                                     </div>
                                     <div class="form-group">
-                                        <input class="form-control" placeholder="Trim" name="trim" type="email" value="">
+                                        <input class="form-control" placeholder="Trim" name="trim" type="text" value="">
                                     </div>
                                     <input type="submit" value="Add Vehicle" class="btn btn-lg btn-success pull-right">
                                 </fieldset>

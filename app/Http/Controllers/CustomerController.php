@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Model\Address;
 use App\Model\Customer;
+use App\Model\Vehicle;
 use Illuminate\Http\Request;
 
 class CustomerController extends Controller
@@ -38,9 +39,8 @@ class CustomerController extends Controller
         return redirect('/customers');
     }
     public function deleteCustomer($id){
-        $customer = Customer::query()->where('address_id','=',$id)->delete();
-        $address = Address::query()->where('id','=',$id)->delete();
-
+        $customer = Customer::find($id);
+        $customer->delete();
        return redirect('/customers');
     }
     public function customerAdd(){

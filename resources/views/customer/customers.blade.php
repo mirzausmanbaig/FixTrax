@@ -48,7 +48,7 @@
                                             <a href="/vehicle/customer/{{$data->id}}" class="btn btn-warning btn-xs">
                                                 <i class="fa fa-car"></i>
                                             </a>
-                                            <a href="/delete/{{$data->address_id}}" class="btn btn-danger btn-xs">
+                                            <a href="/delete/{{$data->id}}" class="btn btn-danger btn-xs">
                                                 <i class="fa fa-trash"></i>
                                             </a>
                                         </td>
