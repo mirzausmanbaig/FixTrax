@@ -10,7 +10,7 @@
             <div class="row">
                 <div class="col-lg-12">
                     <h1 class="page-header">Users
-                    <a class="btn btn-warning btn-labelled pull-right">
+                    <a class="btn btn-warning btn-labelled pull-right" href="/user/add">
                         <span class="btn-label">
                             <i class="fa fa-plus-circle"></i>
                         </span>
@@ -38,18 +38,20 @@
                                     </tr>
                                 </thead>
                                 <tbody>
+                                @foreach($users as $data)
                                     <tr class="">
                                         <td>
-                                            <a href="#" class="btn btn-primary btn-xs">
+                                            <a href="/user/edit/{{$data->id}}" class="btn btn-primary btn-xs">
                                                 <i class="fa fa-pencil"></i>
                                             </a>
-                                            <a href="#" class="btn btn-danger btn-xs">
+                                            <a href="/user/delete/{{$data->id}}" class="btn btn-danger btn-xs">
                                                 <i class="fa fa-trash"></i>
                                             </a>
                                         </td>
-                                        <td>All others</td>
-                                        <td>-</td>
+                                        <td>{{$data->name}}</td>
+                                        <td>{{$data->email}}</td>
                                     </tr>
+                                @endforeach
                                 </tbody>
                             </table>
                             <!-- /.table-responsive -->

@@ -22,6 +22,11 @@ Route::get('/login/{id}', function($id){
 Route::get('/register1','UsersController@register');
 Route::post('/register1','UsersController@postRegister');
 Route::get('/users','UsersController@index');
+Route::get('/user/edit/{id}', 'UsersController@edit');
+Route::post('/user/edit/{id}', 'UsersController@postEdit');
+Route::get('/user/add', 'UsersController@add');
+Route::post('/user/add', 'UsersController@postAdd');
+Route::get('/user/delete/{id}', 'UsersController@deleteUser');
 
 
 Route::get('/vehicles','VehicleController@index');

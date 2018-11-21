@@ -11,7 +11,7 @@
                 <div class="col-md-8 col-md-offset-2">
                     <div class="panel panel-primary">
                         <div class="panel-heading">
-                            <h3 class="panel-title">Update Location</h3>
+                            <h3 class="panel-title">Add Location</h3>
                         </div>
                         <div class="panel-body">
                             <form method="post" action="/location/add">
@@ -35,7 +35,7 @@
                                     <div class="form-group">
                                         <input class="form-control" placeholder="Zip" name="zip" type="text" value="">
                                     </div>
-                                    <input type="submit" value="Update Info" class="btn btn-lg btn-danger pull-right">
+                                    <input type="submit" value="New Location" class="btn btn-lg btn-success pull-right">
                                 </fieldset>
 
                             </form>

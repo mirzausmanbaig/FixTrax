@@ -8,6 +8,7 @@ use App\Model\Company;
 use App\Model\Customer;
 use App\Model\Location;
 use App\Model\Users;
+use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
@@ -20,7 +21,43 @@ class UsersController extends Controller
         return view('register');
     }
     public function index(){
-        return view('users');
+        $users = Users::all()->where('company_id','=', auth()->user()->company_id);
+        return view('user.users')->with(['users'=>$users]);
+    }
+    public function edit($id){
+        $user = Users::find($id);
+        return view('user.userEdit')->with(['user'=>$user]);
+    }
+    public function postEdit(Request $request, $id){
+        $user = Users::find($id);
+        if ($user->password = $request->input('old_password')){
+            $user->name = $request->input('name');
+            $user->email = $request->input('email');
+            $user->password = Hash::make($request->input('password'));
+            $user->save();
+            auth()->logout();
+            return redirect('/login1');
+        }else{
+            dd("wrong password please try again");
+        }
+
+    }
+    public function add(){
+        return view('user.userAdd');
+    }
+    public function postAdd(Request $request){
+        $user = Users::create([
+            'name'=>$request->input('name'),
+            'email'=>$request->input('email'),
+            'password'=>Hash::make($request->input('password')),
+            'company_id'=>auth()->user()->company_id
+        ]);
+        return redirect('/users');
+    }
+    public function deleteUser($id){
+        $user = Users::find($id);
+        $user->delete();
+        return redirect('/users');
     }
     public function postRegister(Request $request){
        $addressCompany = Address::create([
