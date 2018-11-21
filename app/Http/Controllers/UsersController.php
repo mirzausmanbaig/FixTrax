@@ -17,6 +17,10 @@ class UsersController extends Controller
     public function login(){
         return view('login');
     }
+    public function logout(){
+        auth()->logout();
+        return redirect('/login');
+    }
     public function register(){
         return view('register');
     }

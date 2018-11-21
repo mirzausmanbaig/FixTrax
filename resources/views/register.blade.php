@@ -8,7 +8,7 @@
                         <h3 class="panel-title">Please Sign Up</h3>
                     </div>
                     <div class="panel-body">
-                        <form action="/register1" method="post">
+                        <form action="/register" method="post">
                             <fieldset>
                                 @csrf
                                 <legend>User Information</legend>
@@ -44,7 +44,7 @@
                                     <input class="form-control" placeholder="Zip-Code" name="zip" type="text" value="">
                                 </div>
                                 <input type="submit" value="Sign Up" class="btn btn-lg btn-success ">
-                                <a href="/login1" class="btn btn-lg btn-primary ">Login</a>
+                                <a href="/login" class="btn btn-lg btn-primary ">Login</a>
 
                             </fieldset>
 

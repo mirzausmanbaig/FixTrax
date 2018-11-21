@@ -14,13 +14,14 @@
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('/login1','UsersController@login');
+Route::get('/login','UsersController@login');
 Route::get('/login/{id}', function($id){
     auth()->loginUsingId($id);
     return redirect('/customers');
 });
-Route::get('/register1','UsersController@register');
-Route::post('/register1','UsersController@postRegister');
+Route::get('/logout','UsersController@logout');
+Route::get('/register','UsersController@register');
+Route::post('/register','UsersController@postRegister');
 Route::get('/users','UsersController@index');
 Route::get('/user/edit/{id}', 'UsersController@edit');
 Route::post('/user/edit/{id}', 'UsersController@postEdit');
@@ -51,6 +52,7 @@ Route::get('/location/add', 'LocationController@locationAdd');
 Route::post('/location/add', 'LocationController@locationPostAdd');
 
 Route::get('/settings', 'CompanyController@index');
+Route::post('/company/edit/{id}', 'CompanyController@edit');
 
 Route::get('/mailRegistration', function(){
     return view('mail.registration');
