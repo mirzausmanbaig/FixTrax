@@ -10,11 +10,10 @@ use Illuminate\Http\Request;
 class VehicleController extends Controller
 {
    public function index(){
-     $vehicle = Vehicle::with(['customer'=>function($query){
-         $query->where('company_id','=',auth()->user()->company_id);
-     }])->get();
+       $vehicle = Vehicle::with('customer')->get()->where('customer.company_id','=',auth()->user()->company_id );
        return view('vehicle.vehicles')->with(['vehicle'=>$vehicle]);
    }
+
    public function vehicleCustomer($customer_id){
       $a = auth()->user()->company_id;
 
@@ -22,10 +21,50 @@ class VehicleController extends Controller
       if ($customer->company_id != $a){
           dd("bad customer id");
       }
-
        return view('vehicle.vehicleCustomer')->with(['customer'=>$customer]);
+   }
+
+   public function vehicleDelete($id){
+       $vehicle = Vehicle::find($id);
+       $vehicle->delete();
+       return redirect('/vehicles');
+   }
+   public function vehicleEdit($id){
+       $vehicle = Vehicle::find($id);
+       return view('vehicle.vehicleEdit2')->with(['vehicle'=>$vehicle]);
+   }
+   public function vehicleAdd(){
+       $customer = Customer::all()->where('company_id','=', auth()->user()->company_id);
+       $location = Location::all()->where('company_id','=',auth()->user()->company_id);
+       return view('vehicle.vehicleAdd')->with([
+           'customer'=>$customer,
+           'location'=>$location
+       ]);
+   }
+   public function vehiclePostAdd(Request $request){
+        $vehicle = Vehicle::create([
+            'year'=> $request->input('year'),
+            'make'=> $request->input('make'),
+            'model'=>$request->input('model'),
+            'trim'=> $request->input('trim'),
+            'customer_id'=>$request->input('customer'),
+            'location_id'=>$request->input('location')
+       ]);
+
+        return redirect('/vehicles');
 
    }
+
+   public function vehiclePostEdit(Request $request,$id){
+       $vehicle = Vehicle::find($id);
+       $vehicle->year = $request->input('year');
+       $vehicle->make = $request->input('make');
+       $vehicle->model = $request->input('model');
+       $vehicle->trim = $request->input('trim');
+       $vehicle->save();
+       return redirect('/vehicles');
+   }
+
    public function vehicleCustomerEdit($id){
         $vehicle = Vehicle::find($id);
        return view('vehicle.vehicleEdit')->with(['vehicle'=>$vehicle]);
@@ -41,10 +80,12 @@ class VehicleController extends Controller
 
        return redirect('/vehicle/customer/'.$vehicle->customer_id);
    }
+
     public function vehicleCustomerAdd($id){
        $customer = Customer::find($id);
         return view('vehicle.vehicleCustomerAdd')->with(['customer'=>$customer]);
     }
+
     public function  vehicleCustomerPostAdd(Request $request, $customer_id){
        $customer = Customer::find($customer_id);
        $vehicle = Vehicle::create([

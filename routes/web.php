@@ -32,6 +32,12 @@ Route::get('/user/delete/{id}', 'UsersController@deleteUser');
 
 
 Route::get('/vehicles','VehicleController@index');
+Route::get('/vehicle/delete/{id}', 'VehicleController@vehicleDelete');
+Route::get('/vehicle/edit/{id}', 'VehicleController@vehicleEdit');
+Route::post('/vehicle/edit/{id}', 'VehicleController@vehiclePostEdit');
+Route::get('/vehicle/add', 'VehicleController@vehicleAdd');
+Route::post('/vehicle/add', 'VehicleController@vehiclePostAdd');
+
 Route::get('/vehicle/customer/{id}', 'VehicleController@vehicleCustomer');
 Route::get('/vehicle/customer/edit/{id}','VehicleController@vehicleCustomerEdit');
 Route::post('vehicle/customer/edit/{id}','VehicleController@vehicleCustomerPostEdit');

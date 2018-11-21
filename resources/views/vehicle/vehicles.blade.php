@@ -3,7 +3,7 @@
             <div class="row">
                 <div class="col-lg-12">
                     <h1 class="page-header">Vehicles
-                        <a class="btn btn-warning pull-right" href="/customer/add">
+                        <a class="btn btn-warning pull-right" href="/vehicle/add">
                         <span class="btn-label">
                             <i class="fa fa-plus-circle"></i>
                         </span>
@@ -25,7 +25,7 @@
                             <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example">
                                 <thead>
                                     <tr>
-                                        <th width="7%"></th>
+                                        <th width="8%"></th>
                                         <th>Year</th>
                                         <th>Make</th>
                                         <th>Model</th>
@@ -37,10 +37,10 @@
                                 @foreach($vehicle as $data)
                                     <tr class="gradeU">
                                         <td>
-                                            <a href="/vehicle/edit/" class="btn btn-primary btn-xs">
+                                            <a href="/vehicle/edit/{{$data->id}}" class="btn btn-primary btn-xs">
                                                 <i class="fa fa-pencil"></i>
                                             </a>
-                                            <a href="#" class="btn btn-danger btn-xs">
+                                            <a href="/vehicle/delete/{{$data->id}}" class="btn btn-danger btn-xs">
                                                 <i class="fa fa-trash"></i>
                                             </a>
                                         </td>
@@ -48,7 +48,7 @@
                                         <td>{{$data->make}}</td>
                                         <td>{{$data->model}}</td>
                                         <td>{{$data->trim}}</td>
-                                        <td>{{$data->name}}</td>
+                                        <td>{{$data->customer->name}}</td>
                                     </tr>
                                 @endforeach
                                 </tbody>
