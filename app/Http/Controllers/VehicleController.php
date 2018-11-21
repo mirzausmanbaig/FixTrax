@@ -10,8 +10,9 @@ use Illuminate\Http\Request;
 class VehicleController extends Controller
 {
    public function index(){
-      $customer = Customer::all()->where('company_id','=',auth()->user()->company_id);
-      dd($customer);
+     $vehicle = Vehicle::with(['customer'=>function($query){
+         $query->where('company_id','=',auth()->user()->company_id);
+     }])->get();
        return view('vehicle.vehicles')->with(['vehicle'=>$vehicle]);
    }
    public function vehicleCustomer($customer_id){

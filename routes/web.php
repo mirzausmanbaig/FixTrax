@@ -15,6 +15,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 Route::get('/login','UsersController@login');
+Route::post('/login', 'UsersController@postLogin');
 Route::get('/login/{id}', function($id){
     auth()->loginUsingId($id);
     return redirect('/customers');

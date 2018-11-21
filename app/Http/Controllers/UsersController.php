@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\Password;
 use App\Mail\Registration;
 use App\Model\Address;
 use App\Model\Company;
@@ -10,12 +11,26 @@ use App\Model\Location;
 use App\Model\Users;
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
 
 class UsersController extends Controller
 {
     public function login(){
         return view('login');
+    }
+    public function postLogin(Request $request){
+        $email = $request->input('email');
+        $password = $request->input('password');
+        if (auth()->attempt(['email'=>$email,'password'=>$password])){
+            $user = Users::query()->where('email', '=',$email)->first();
+            auth()->login($user);
+            return redirect('/customers');
+        }else{
+            dd('enter right info');
+        }
+
     }
     public function logout(){
         auth()->logout();
@@ -33,18 +48,14 @@ class UsersController extends Controller
         return view('user.userEdit')->with(['user'=>$user]);
     }
     public function postEdit(Request $request, $id){
-        $user = Users::find($id);
-        if ($user->password = $request->input('old_password')){
-            $user->name = $request->input('name');
-            $user->email = $request->input('email');
-            $user->password = Hash::make($request->input('password'));
-            $user->save();
-            auth()->logout();
-            return redirect('/login1');
-        }else{
-            dd("wrong password please try again");
-        }
+           $str = str_random(8);
+           $user = Users::find($id);
+           $user->name = $request->input('name');
+           $user->password = Hash::make($str);
+           $user->save();
 
+           \Mail::to($user->email)->queue(new Password($user, $str));
+           return redirect('/users');
     }
     public function add(){
         return view('user.userAdd');

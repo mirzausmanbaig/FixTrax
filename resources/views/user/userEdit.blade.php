@@ -21,17 +21,10 @@
                                         <input class="form-control" placeholder="Name" name="name" type="text" value="{{$user->name}}">
                                     </div>
                                     <div class="form-group">
-                                        <input class="form-control" placeholder="Email" name="email" type="text" value="{{$user->email}}">
+                                        <input class="form-control" disabled="" placeholder="Email" name="email" type="text" value="{{$user->email}}">
                                     </div>
-                                    <div class="form-group">
-                                        <input class="form-control" placeholder="Enter old Password" name="old_password" type="password" value="">
-                                    </div>
-                                    <div class="form-group">
-                                        <input class="form-control" placeholder="Enter New Password" name="password" type="password" value="">
-                                    </div>
-                                    <input type="submit" value="Update Info" class="btn btn-lg btn-danger pull-right">
+                                    <input type="submit" value="Send Random Password" class="btn btn-lg btn-danger pull-right">
                                 </fieldset>
-
                             </form>
                         </div>
                     </div>

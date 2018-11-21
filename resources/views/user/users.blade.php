@@ -32,7 +32,7 @@
                             <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example">
                                 <thead>
                                     <tr>
-                                        <th width="7%"></th>
+                                        <th width="8%"></th>
                                         <th>Name</th>
                                         <th>Email</th>
                                     </tr>
