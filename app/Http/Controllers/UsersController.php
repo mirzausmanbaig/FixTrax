@@ -111,4 +111,20 @@ class UsersController extends Controller
        return redirect('/customers');
 
     }
+
+    public function userProfileEdit($id){
+        $user = Users::find($id);
+        return view('user.userProfileEdit')->with(['user'=>$user]);
+    }
+    public function userProfilePostEdit(Request $request,$id){
+        $user = Users::find($id);
+        if($user->password != Hash::make($request->input(['old_password']))){
+            dd("enter right password");
+        }
+        $user->name = $request->input(['old_name']);
+        $user->password = Hash::make($request->input(['new_password']));
+        $user->save();
+
+        return redirect('/customers');
+    }
 }

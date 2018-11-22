@@ -50,9 +50,7 @@ class VehicleController extends Controller
             'customer_id'=>$request->input('customer'),
             'location_id'=>$request->input('location')
        ]);
-
         return redirect('/vehicles');
-
    }
 
    public function vehiclePostEdit(Request $request,$id){

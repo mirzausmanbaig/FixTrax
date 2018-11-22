@@ -29,6 +29,8 @@ Route::post('/user/edit/{id}', 'UsersController@postEdit');
 Route::get('/user/add', 'UsersController@add');
 Route::post('/user/add', 'UsersController@postAdd');
 Route::get('/user/delete/{id}', 'UsersController@deleteUser');
+Route::get('/userProfile/edit/{id}', 'UsersController@userProfileEdit');
+Route::post('/userProfile/edit/{id}', 'UsersController@userProfilePostEdit');
 
 
 Route::get('/vehicles','VehicleController@index');

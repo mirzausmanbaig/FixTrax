@@ -68,7 +68,7 @@
                         <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
                     </a>
                     <ul class="dropdown-menu dropdown-user">
-                        <li><a href="/users"><i class="fa fa-user fa-fw"></i> {{auth()->user()->name}}</a>
+                        <li><a href="/userProfile/edit/{{auth()->user()->id}}"><i class="fa fa-user fa-fw"></i> {{auth()->user()->name}}</a>
                         </li>
                         <li class="divider"></li>
                         <li><a href="/logout"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
