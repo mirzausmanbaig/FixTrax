@@ -66,7 +66,7 @@
         <h1>Thank You {{$user->name}}!! for your registration.</h1><br/>
 
         Please Verify your Email.<br/>
-        <a class="btn btn-success" href="/http://127.0.0.1:8000/verify/{{$userVerify->string}}">Verify Email</a>
+        <a class="btn btn-success" href="127.0.0.1:8000/verify/{{$userVerify->string}}">Verify Email</a>
 
     </div>
     <!-- /#page-wrapper -->

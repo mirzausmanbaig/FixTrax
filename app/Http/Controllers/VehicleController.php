@@ -27,7 +27,7 @@ class VehicleController extends Controller
    public function vehicleDelete($id){
        $vehicle = Vehicle::find($id);
        $vehicle->delete();
-       return redirect('/vehicles');
+       return redirect('/vehicles')->with('alert.success','vehicle deleted successfully');
    }
    public function vehicleEdit($id){
        $vehicle = Vehicle::find($id);
@@ -50,7 +50,7 @@ class VehicleController extends Controller
             'customer_id'=>$request->input('customer'),
             'location_id'=>$request->input('location')
        ]);
-        return redirect('/vehicles');
+        return redirect('/vehicles')->with('alert.success','Vehicle Added Successfully');
    }
 
    public function vehiclePostEdit(Request $request,$id){
@@ -60,7 +60,7 @@ class VehicleController extends Controller
        $vehicle->model = $request->input('model');
        $vehicle->trim = $request->input('trim');
        $vehicle->save();
-       return redirect('/vehicles');
+       return redirect('/vehicles')->with('alert.success','Vehicle Updated Successfully');
    }
 
    public function vehicleCustomerEdit($id){

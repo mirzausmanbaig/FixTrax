@@ -36,12 +36,12 @@ class CustomerController extends Controller
             'zip'=>$request->input('zip')
         ]);
 
-        return redirect('/customers')->with('alert.success','Customer Updated');
+        return redirect('/customers')->with('alert.success','Customer Updated Successfully');
     }
     public function deleteCustomer($id){
         $customer = Customer::find($id);
         $customer->delete();
-       return redirect('/customers');
+       return redirect('/customers')->with('alert.success','Customer Deleted Successfully');
     }
     public function customerAdd(){
         return view('customer.customerAdd');
@@ -63,6 +63,6 @@ class CustomerController extends Controller
             'company_id'=>$company_id,
             'address_id'=>$address->id
         ]);
-        return redirect('/customers')->with('alert.success','Customer Added');
+        return redirect('/customers')->with('alert.success','Customer Added Successfully');
     }
 }

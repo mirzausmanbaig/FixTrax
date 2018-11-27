@@ -25,6 +25,6 @@ class CompanyController extends Controller
         $address->state = $request->input('state');
         $address->zip = $request->input('zip');
         $address->save();
-        return redirect('/customers');
+        return redirect('/customers')->with('alert.success','Company updated successfully');
     }
 }

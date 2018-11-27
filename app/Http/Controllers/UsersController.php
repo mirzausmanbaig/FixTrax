@@ -59,7 +59,7 @@ class UsersController extends Controller
            $user->save();
 
            \Mail::to($user->email)->queue(new Password($user, $str));
-           return redirect('/users');
+           return redirect('/users')->with('alert.success','Password Sent Successfully. Please check you E-Mail');
     }
     public function add(){
         return view('user.userAdd');
@@ -71,12 +71,12 @@ class UsersController extends Controller
             'password'=>Hash::make($request->input('password')),
             'company_id'=>auth()->user()->company_id
         ]);
-        return redirect('/users');
+        return redirect('/users')->with('alert.success','User Added Successfully');
     }
     public function deleteUser($id){
         $user = Users::find($id);
         $user->delete();
-        return redirect('/users');
+        return redirect('/users')->with('alert.success','User Deleted Successfully');
     }
     public function postRegister(Request $request){
        $addressCompany = Address::create([
@@ -120,18 +120,20 @@ class UsersController extends Controller
        return redirect('/customers');
 
     }
+
     public function verify($string){
         $userVerify = UserEmailVerification::query()->where('string','=',$string)->first();
         $user = Users::find($userVerify->user_id);
         $user->email_verified_at = date('Y-m-d H:i:s');
         $user->save();
-        return redirect('/customers')->with('alert.success','Welcome');
+        return redirect('/customers')->with('alert.success','Welcome to FixTrax');
     }
+
     public function resendVerification(){
         $user = Users::find(auth()->user()->id);
         $userVerify = UserEmailVerification::query()->where('user_id','=',auth()->user()->id)->first();
         \Mail::to($user->email)->queue(new Registration($user, $userVerify));
-        return redirect('/resend')->with('alert.success','Email Verification Sent');
+        return redirect('/resend')->with('alert.success','Email Verification Sent Successfully');
     }
 
     public function userProfileEdit($id){
@@ -140,13 +142,13 @@ class UsersController extends Controller
     }
     public function userProfilePostEdit(Request $request,$id){
         $user = Users::find($id);
-        if($user->password != Hash::make($request->input(['old_password']))){
+        if($user->password != $request->input(['old_password'])){
             dd("enter right password");
         }
         $user->name = $request->input(['old_name']);
         $user->password = Hash::make($request->input(['new_password']));
         $user->save();
-
-        return redirect('/customers');
+        auth()->logout();
+        return redirect('/login');
     }
 }

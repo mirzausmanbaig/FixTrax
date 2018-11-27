@@ -28,7 +28,7 @@ class LocationController extends Controller
         $address->zip       = $request->input('zip');
         $address->save();
 
-        return redirect('/locations');
+        return redirect('/locations')->with('alert.success','Location Updated Successfully');
     }
     public function locationAdd(){
         return view('location.locationAdd');
@@ -47,7 +47,7 @@ class LocationController extends Controller
             'company_id'   =>auth()->user()->company_id,
             'address_id'   =>$address->id
         ]);
-        return redirect('/locations');
+        return redirect('/locations')->with('alert.success','Location Added Successfully');
 
     }
 }
