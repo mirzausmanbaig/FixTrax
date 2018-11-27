@@ -64,8 +64,8 @@
 
     <div id="page-wrapper">
         <h1>Thank You!! for your registration.</h1><br/>
-        <a>Resend Verification</a><br/>
-        <input class="btn btn-danger" type="submit" name="logout">
+        <a href="/resendVerification">Resend Verification</a><br/>
+        <a class="btn btn-danger" href="/logout">Logout</a>
 
     </div>
     <!-- /#page-wrapper -->

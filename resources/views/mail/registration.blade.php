@@ -63,9 +63,10 @@
     </nav>
 
     <div id="page-wrapper">
-        <h1>Thank You!! for your registration.</h1><br/>
+        <h1>Thank You {{$user->name}}!! for your registration.</h1><br/>
 
-            name =  {{$user->company->company_name}}
+        Please Verify your Email.<br/>
+        <a class="btn btn-success" href="/http://127.0.0.1:8000/verify/{{$userVerify->string}}">Verify Email</a>
 
     </div>
     <!-- /#page-wrapper -->

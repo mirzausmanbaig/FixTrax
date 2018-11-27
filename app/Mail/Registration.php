@@ -4,6 +4,7 @@ namespace App\Mail;
 
 use App\Model\Company;
 use App\Model\Location;
+use App\Model\UserEmailVerification;
 use App\Model\Users;
 use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
@@ -13,8 +14,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 class Registration extends Mailable
 {
     public $user;
-    public $company;
-    public $location;
+    public $userVerify;
     use Queueable, SerializesModels;
 
     /**
@@ -22,11 +22,10 @@ class Registration extends Mailable
      *
      * @return void
      */
-    public function __construct(Users $user, Company $company, Location $location)
+    public function __construct(Users $user, UserEmailVerification $userVerify)
     {
         $this->user = $user;
-        $this->company = $company;
-        $this->location = $location;
+        $this->userVerify = $userVerify;
     }
 
     /**
@@ -38,8 +37,7 @@ class Registration extends Mailable
     {
         return $this->view('mail.registration')->with([
             'user'      => $this->user,
-            'location'  => $this->location,
-            'company'   => $this->company,
+            'userVerify'  => $this->userVerify,
         ]);
     }
 }

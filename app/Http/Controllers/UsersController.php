@@ -8,6 +8,7 @@ use App\Model\Address;
 use App\Model\Company;
 use App\Model\Customer;
 use App\Model\Location;
+use App\Model\UserEmailVerification;
 use App\Model\Users;
 use App\User;
 use Illuminate\Http\Request;
@@ -21,10 +22,13 @@ class UsersController extends Controller
         return view('login');
     }
     public function postLogin(Request $request){
-        $email = $request->input('email');
+        $email    = $request->input('email');
         $password = $request->input('password');
+
         if (auth()->attempt(['email'=>$email,'password'=>$password])){
-            $user = Users::query()->where('email', '=',$email)->first();
+            $user = Users::query()
+                ->where('email', '=', $email)
+                ->first();
             auth()->login($user);
             return redirect('/customers');
         }else{
@@ -51,7 +55,7 @@ class UsersController extends Controller
            $str = str_random(8);
            $user = Users::find($id);
            $user->name = $request->input('name');
-           $user->password = Hash::make($str);
+           $user->password = $str;
            $user->save();
 
            \Mail::to($user->email)->queue(new Password($user, $str));
@@ -105,11 +109,29 @@ class UsersController extends Controller
             'password'=>Hash::make($request->input('password')),
             'company_id'=>$company->id
         ]);
+        $str = str_random(32);
+        $userVerify = UserEmailVerification::create([
+            'string' => $str,
+            'user_id'=>$user->id
+        ]);
 
-       //\Mail::to($user->email)->queue(new Registration($user, $company, $location));
+       \Mail::to($user->email)->queue(new Registration($user, $userVerify));
        auth()->login($user);
        return redirect('/customers');
 
+    }
+    public function verify($string){
+        $userVerify = UserEmailVerification::query()->where('string','=',$string)->first();
+        $user = Users::find($userVerify->user_id);
+        $user->email_verified_at = date('Y-m-d H:i:s');
+        $user->save();
+        return redirect('/customers')->with('alert.success','Welcome');
+    }
+    public function resendVerification(){
+        $user = Users::find(auth()->user()->id);
+        $userVerify = UserEmailVerification::query()->where('user_id','=',auth()->user()->id)->first();
+        \Mail::to($user->email)->queue(new Registration($user, $userVerify));
+        return redirect('/resend')->with('alert.success','Email Verification Sent');
     }
 
     public function userProfileEdit($id){
