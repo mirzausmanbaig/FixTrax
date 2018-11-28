@@ -23,18 +23,18 @@ class CustomerController extends Controller
         $customer  = Customer::query()
             ->where('address_id','=',$id)
             ->update([
-            'name'=>$request->input('name'),
-            'email'=>$request->input('email'),
+            'name'        =>$request->input('name'),
+            'email'       =>$request->input('email'),
             'phone_number'=>$request->input('phone_number'),
-            'company_id'=>auth()->user()->company_id,
-            'address_id'=>$id
+            'company_id'  =>auth()->user()->company_id,
+            'address_id'  =>$id
         ]);
         $address = Address::query()->where('id','=',$id)->update([
-            'address'=>$request->input('address'),
+            'address'  =>$request->input('address'),
             'address_2'=>$request->input('address_2'),
-            'city'=>$request->input('city'),
-            'state'=>$request->input('state'),
-            'zip'=>$request->input('zip')
+            'city'     =>$request->input('city'),
+            'state'    =>$request->input('state'),
+            'zip'      =>$request->input('zip')
         ]);
 
         return redirect('/customers')->with('alert.success','Customer Updated Successfully');
@@ -51,18 +51,18 @@ class CustomerController extends Controller
     public function customerRegister(CustomerAddEditRequest $request){
         $company_id = auth()->user()->company_id;
         $address = Address::create([
-            'address'=>$request->input('address'),
+            'address'  =>$request->input('address'),
             'address_2'=>$request->input('address_2'),
-            'city'=>$request->input('city'),
-            'state'=>$request->input('state'),
-            'zip'=>$request->input('zip')
+            'city'     =>$request->input('city'),
+            'state'    =>$request->input('state'),
+            'zip'      =>$request->input('zip')
         ]);
         $customer = Customer::create([
-            'name'=>$request->input('name'),
-            'email'=>$request->input('email'),
+            'name'        =>$request->input('name'),
+            'email'       =>$request->input('email'),
             'phone_number'=>$request->input('phone_number'),
-            'company_id'=>$company_id,
-            'address_id'=>$address->id
+            'company_id'  =>$company_id,
+            'address_id'  =>$address->id
         ]);
         return redirect('/customers')->with('alert.success','Customer Added Successfully');
     }

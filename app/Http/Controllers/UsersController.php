@@ -20,9 +20,11 @@ use Illuminate\Support\Facades\Mail;
 
 class UsersController extends Controller
 {
+    //Login
     public function login(){
         return view('login');
     }
+    //Post Login
     public function postLogin(Request $request){
         $email    = $request->input('email');
         $password = $request->input('password');
@@ -38,13 +40,13 @@ class UsersController extends Controller
             }
         }
 
+    // Logout
     public function logout(){
         auth()->logout();
         return redirect('/login');
     }
-    public function register(){
-        return view('register');
-    }
+
+
     public function index(){
         $users = Users::all()->where('company_id','=', auth()->user()->company_id);
         return view('user.users')->with(['users'=>$users]);
@@ -54,18 +56,20 @@ class UsersController extends Controller
         return view('user.userEdit')->with(['user'=>$user]);
     }
     public function postEdit(Request $request, $id){
-           $str = str_random(8);
-           $user = Users::find($id);
-           $user->name = $request->input('name');
+           $str            = str_random(8);
+           $user           = Users::find($id);
+           $user->name     = $request->input('name');
            $user->password = \Hash::make($str);
-            $validator = \Validator::make($request->all(), [
-                'name' => 'required|string|max:50',
-            ]);
 
-        if ($validator->fails()) {
-            \Session::flash('error', $validator->messages()->first());
-            return redirect()->back()->with('alert.danger','Name is required');
-        }
+           $validator      = \Validator::make($request->all(), [
+                'name' => 'required|string|max:50',
+           ]);
+
+            if ($validator->fails()) {
+                \Session::flash('error', $validator->messages()->first());
+                return redirect()->back()->with('alert.danger','Name is required');
+            }
+
            $user->save();
 
            \Mail::to($user->email)->queue(new Password($user, $str));
@@ -76,9 +80,9 @@ class UsersController extends Controller
     }
     public function postAdd(UserAddRequest $request){
         $user = Users::create([
-            'name'=>$request->input('name'),
-            'email'=>$request->input('email'),
-            'password'=>Hash::make($request->input('password')),
+            'name'      =>$request->input('name'),
+            'email'     =>$request->input('email'),
+            'password'  =>Hash::make($request->input('password')),
             'company_id'=>auth()->user()->company_id
         ]);
         $str = str_random(32);
@@ -89,40 +93,49 @@ class UsersController extends Controller
         \Mail::to($user->email)->queue(new Registration($user,$userVerify));
         return redirect('/users')->with('alert.success','User Added Successfully');
     }
+
+    //Delete User
     public function deleteUser($id){
         $user = Users::find($id);
         $user->delete();
         return redirect('/users')->with('alert.success','User Deleted Successfully');
     }
+
+    //Registration
+    public function register(){
+        return view('register');
+    }
+
+    //Post Registration
     public function postRegister(RegisterRequest $request){
        $addressCompany = Address::create([
-            'address'=>$request->input('address'),
+            'address'  =>$request->input('address'),
             'address_2'=>$request->input('address'),
-            'city'=>$request->input('city'),
-            'state'=>$request->input('state'),
-            'zip'=>$request->input('zip')
+            'city'     =>$request->input('city'),
+            'state'    =>$request->input('state'),
+            'zip'      =>$request->input('zip')
         ]);
         $company =  Company::create([
             'company_name'=>$request->input('company_name'),
-            'address_id'=>$addressCompany->id
+            'address_id'  =>$addressCompany->id
         ]);
         $addressLocation= Address::create([
-            'address'=>$request->input('address'),
+            'address'  =>$request->input('address'),
             'address_2'=>$request->input('address'),
-            'city'=>$request->input('city'),
-            'state'=>$request->input('state'),
-            'zip'=>$request->input('zip')
+            'city'     =>$request->input('city'),
+            'state'    =>$request->input('state'),
+            'zip'      =>$request->input('zip')
         ]);
         $location = Location::create([
             'location_name'=>$request->input('location_name'),
-            'address_id'=>$addressLocation->id,
-            'company_id'=>$company->id
+            'address_id'   =>$addressLocation->id,
+            'company_id'   =>$company->id
         ]);
 
         $user = Users::create([
-            'name'=>$request->input('name'),
-            'email'=>$request->input('email'),
-            'password'=>Hash::make($request->input('password')),
+            'name'      =>$request->input('name'),
+            'email'     =>$request->input('email'),
+            'password'  =>Hash::make($request->input('password')),
             'company_id'=>$company->id
         ]);
         $str = str_random(32);

@@ -45,10 +45,10 @@ class VehicleController extends Controller
    }
    public function vehiclePostAdd(VehicleAddRequest $request){
         $vehicle = Vehicle::create([
-            'year'=> $request->input('year'),
-            'make'=> $request->input('make'),
-            'model'=>$request->input('model'),
-            'trim'=> $request->input('trim'),
+            'year'       => $request->input('year'),
+            'make'       => $request->input('make'),
+            'model'      =>$request->input('model'),
+            'trim'       => $request->input('trim'),
             'customer_id'=>$request->input('customer'),
             'location_id'=>$request->input('location')
        ]);
@@ -57,10 +57,10 @@ class VehicleController extends Controller
 
    public function vehiclePostEdit(VehicleEditRequest $request,$id){
        $vehicle = Vehicle::find($id);
-       $vehicle->year = $request->input('year');
-       $vehicle->make = $request->input('make');
+       $vehicle->year  = $request->input('year');
+       $vehicle->make  = $request->input('make');
        $vehicle->model = $request->input('model');
-       $vehicle->trim = $request->input('trim');
+       $vehicle->trim  = $request->input('trim');
        $vehicle->save();
        return redirect('/vehicles')->with('alert.success','Vehicle Updated Successfully');
    }
@@ -89,10 +89,10 @@ class VehicleController extends Controller
     public function  vehicleCustomerPostAdd(VehicleEditRequest $request, $customer_id){
        $customer = Customer::find($customer_id);
        $vehicle = Vehicle::create([
-           'year'=>$request->input('year'),
-           'make'=>$request->input('make'),
-           'model'=>$request->input('model'),
-           'trim'=>$request->input('trim'),
+           'year'       =>$request->input('year'),
+           'make'       =>$request->input('make'),
+           'model'      =>$request->input('model'),
+           'trim'       =>$request->input('trim'),
            'customer_id'=>$customer_id,
            'location_id'=>$customer->location
        ]);
