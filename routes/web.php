@@ -27,6 +27,7 @@ Route::get('/resendVerification','UsersController@resendVerification');
 Route::get('/verify/{string}', 'UsersController@verify');
 
 
+
 Route::middleware(['auth'])->group(function(){
     Route::get('/resend', function(){
         return view('mail.resend');

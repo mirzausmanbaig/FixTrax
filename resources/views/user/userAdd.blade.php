@@ -18,7 +18,7 @@
                                 @csrf
                                 <fieldset>
                                     <div class="form-group">
-                                        <input class="form-control" placeholder="Name" name="name" type="text" value="">
+                                        <input class="form-control" placeholder="Name" name="name" type="text" value="{{request()->old('name')}}">
                                     </div>
                                     <div class="form-group">
                                         <input class="form-control" placeholder="Email" name="email" type="text" value="">

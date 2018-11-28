@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\CompanyEditRequest;
 use App\Model\Address;
 use App\Model\Company;
 use Illuminate\Http\Request;
@@ -13,7 +14,7 @@ class CompanyController extends Controller
         $company = Company::with('address')->whereId(auth()->user()->company_id)->first();
         return view('settings')->with(['company'=>$company]);
     }
-    public function edit(Request $request,$id){
+    public function edit(CompanyEditRequest $request,$id){
         $company = Company::find($id);
         $company->company_name = $request->input('company_name');
         $company->save();

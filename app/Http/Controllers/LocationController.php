@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\LocationAddEditRequest;
 use App\Model\Address;
 use App\Model\Location;
 use Illuminate\Http\Request;
@@ -16,7 +17,7 @@ class LocationController extends Controller
         $location = Location::query()->with('address')->whereId($id)->first();
         return view('location.locationEdit')->with(['location'=>$location]);
     }
-    public function locationPostEdit(Request $request, $id){
+    public function locationPostEdit(LocationAddEditRequest $request, $id){
         $location = Location::find($id);
         $location->location_name = $request->input('location_name');
         $location->save();
@@ -33,7 +34,7 @@ class LocationController extends Controller
     public function locationAdd(){
         return view('location.locationAdd');
     }
-    public function locationPostAdd(Request $request){
+    public function locationPostAdd(LocationAddEditRequest $request){
 
         $address = Address::create([
             'address'  =>$request->input('address'),

@@ -18,15 +18,19 @@
                                 @csrf
                                 <fieldset>
                                     <div class="form-group">
+                                        <h5>Year</h5>
                                         <input class="form-control" placeholder="Year" name="year" type="text" value="{{$vehicle->year}}">
                                     </div>
                                     <div class="form-group">
+                                        <h5>Make</h5>
                                         <input class="form-control" placeholder="Make" name="make" type="text" value="{{$vehicle->make}}">
                                     </div>
                                     <div class="form-group">
+                                        <h5>Model</h5>
                                         <input class="form-control" placeholder="Model" name="model" type="text" value="{{$vehicle->model}}">
                                     </div>
                                     <div class="form-group">
+                                        <h5>Trim</h5>
                                         <input class="form-control" placeholder="Trim" name="trim" type="text" value="{{$vehicle->trim}}">
                                     </div>
                                     <input type="submit" value="Update Info" class="btn btn-lg btn-danger pull-right">

@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\VehicleAddRequest;
+use App\Http\Requests\VehicleEditRequest;
 use App\Model\Customer;
 use App\Model\Location;
 use App\Model\Vehicle;
@@ -41,7 +43,7 @@ class VehicleController extends Controller
            'location'=>$location
        ]);
    }
-   public function vehiclePostAdd(Request $request){
+   public function vehiclePostAdd(VehicleAddRequest $request){
         $vehicle = Vehicle::create([
             'year'=> $request->input('year'),
             'make'=> $request->input('make'),
@@ -53,7 +55,7 @@ class VehicleController extends Controller
         return redirect('/vehicles')->with('alert.success','Vehicle Added Successfully');
    }
 
-   public function vehiclePostEdit(Request $request,$id){
+   public function vehiclePostEdit(VehicleEditRequest $request,$id){
        $vehicle = Vehicle::find($id);
        $vehicle->year = $request->input('year');
        $vehicle->make = $request->input('make');
@@ -68,12 +70,12 @@ class VehicleController extends Controller
        return view('vehicle.vehicleEdit')->with(['vehicle'=>$vehicle]);
    }
 
-   public function vehicleCustomerPostEdit(Request $request,$id){
+   public function vehicleCustomerPostEdit(VehicleEditRequest $request,$id){
        $vehicle = Vehicle::find($id);
-       $vehicle->year = $request->input('year');
-       $vehicle->make=$request->input('make');
-        $vehicle->model=$request->input('model');
-        $vehicle->trim=$request->input('trim');
+       $vehicle->year   = $request->input('year');
+       $vehicle->make   =$request->input('make');
+        $vehicle->model =$request->input('model');
+        $vehicle->trim  =$request->input('trim');
         $vehicle->save();
 
        return redirect('/vehicle/customer/'.$vehicle->customer_id);
@@ -84,7 +86,7 @@ class VehicleController extends Controller
         return view('vehicle.vehicleCustomerAdd')->with(['customer'=>$customer]);
     }
 
-    public function  vehicleCustomerPostAdd(Request $request, $customer_id){
+    public function  vehicleCustomerPostAdd(VehicleEditRequest $request, $customer_id){
        $customer = Customer::find($customer_id);
        $vehicle = Vehicle::create([
            'year'=>$request->input('year'),

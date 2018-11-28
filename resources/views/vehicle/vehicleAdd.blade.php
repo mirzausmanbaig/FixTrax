@@ -18,16 +18,16 @@
                                 <fieldset>
                                     @csrf
                                     <div class="form-group">
-                                        <input class="form-control" placeholder="Year" name="year" type="text" value="">
+                                        <input class="form-control" placeholder="Year" name="year" type="text" value="{{request()->old('year')}}">
                                     </div>
                                     <div class="form-group">
-                                        <input class="form-control" placeholder="Make" name="make" type="text" value="">
+                                        <input class="form-control" placeholder="Make" name="make" type="text" value="{{request()->old('make')}}">
                                     </div>
                                     <div class="form-group">
-                                        <input class="form-control" placeholder="Model" name="model" type="text" value="">
+                                        <input class="form-control" placeholder="Model" name="model" type="text" value="{{request()->old('model')}}">
                                     </div>
                                     <div class="form-group">
-                                        <input class="form-control" placeholder="Trim" name="trim" type="text" value="">
+                                        <input class="form-control" placeholder="Trim" name="trim" type="text" value="{{request()->old('trim')}}">
                                     </div>
                                     <div class="form-group">
                                         <select class="form-control" name="location">

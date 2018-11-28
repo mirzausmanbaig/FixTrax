@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\CustomerAddEditRequest;
 use App\Model\Address;
 use App\Model\Customer;
 use App\Model\Vehicle;
@@ -18,7 +19,7 @@ class CustomerController extends Controller
         $customer = Customer::query()->with('address')->where('address_id','=',$id)->first();
         return view('customer.customerEdit')->with(['customer'=>$customer]);
     }
-    public function customerPostEdit(Request $request, $id){
+    public function customerPostEdit(CustomerAddEditRequest $request, $id){
         $customer  = Customer::query()
             ->where('address_id','=',$id)
             ->update([
@@ -47,7 +48,7 @@ class CustomerController extends Controller
         return view('customer.customerAdd');
     }
 
-    public function customerRegister(Request $request){
+    public function customerRegister(CustomerAddEditRequest $request){
         $company_id = auth()->user()->company_id;
         $address = Address::create([
             'address'=>$request->input('address'),

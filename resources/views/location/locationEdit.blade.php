@@ -18,21 +18,27 @@
                                 @csrf
                                 <fieldset>
                                     <div class="form-group">
+                                        <h5>Name</h5>
                                         <input class="form-control" placeholder="Name" name="location_name" type="text" value="{{$location->location_name}}">
                                     </div>
                                     <div class="form-group">
+                                        <h5>Address</h5>
                                         <input class="form-control" placeholder="Address" name="address" type="text" value="{{$location->address->address}}">
                                     </div>
                                     <div class="form-group">
+                                        <h5>Address 2</h5>
                                         <input class="form-control" placeholder="Address_2" name="address_2" type="text" value="{{$location->address->address_2}}">
                                     </div>
                                     <div class="form-group">
+                                        <h5>City</h5>
                                         <input class="form-control" placeholder="City" name="city" type="text" value="{{$location->address->city}}">
                                     </div>
                                     <div class="form-group">
+                                        <h5>State</h5>
                                         <input class="form-control" placeholder="State" name="state" type="text" value="{{$location->address->state}}">
                                     </div>
                                     <div class="form-group">
+                                        <h5>Zip-Code</h5>
                                         <input class="form-control" placeholder="Zip" name="zip" type="text" value="{{$location->address->zip}}">
                                     </div>
                                     <input type="submit" value="Update Info" class="btn btn-lg btn-danger pull-right">

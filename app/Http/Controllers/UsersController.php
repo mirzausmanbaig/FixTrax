@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\RegisterRequest;
+use App\Http\Requests\UserAddRequest;
 use App\Mail\Password;
 use App\Mail\Registration;
 use App\Model\Address;
@@ -32,10 +34,10 @@ class UsersController extends Controller
             auth()->login($user);
             return redirect('/customers');
         }else{
-            dd('enter right info');
+            return redirect()->back()->with('alert.danger','Email or password is incorrect');
+            }
         }
 
-    }
     public function logout(){
         auth()->logout();
         return redirect('/login');
@@ -55,22 +57,36 @@ class UsersController extends Controller
            $str = str_random(8);
            $user = Users::find($id);
            $user->name = $request->input('name');
-           $user->password = $str;
+           $user->password = \Hash::make($str);
+            $validator = \Validator::make($request->all(), [
+                'name' => 'required|string|max:50',
+            ]);
+
+        if ($validator->fails()) {
+            \Session::flash('error', $validator->messages()->first());
+            return redirect()->back()->with('alert.danger','Name is required');
+        }
            $user->save();
 
            \Mail::to($user->email)->queue(new Password($user, $str));
-           return redirect('/users')->with('alert.success','Password Sent Successfully. Please check you E-Mail');
+           return redirect('/users')->with('alert.success','Password Sent Successfully. Please check your E-Mail');
     }
     public function add(){
         return view('user.userAdd');
     }
-    public function postAdd(Request $request){
+    public function postAdd(UserAddRequest $request){
         $user = Users::create([
             'name'=>$request->input('name'),
             'email'=>$request->input('email'),
             'password'=>Hash::make($request->input('password')),
             'company_id'=>auth()->user()->company_id
         ]);
+        $str = str_random(32);
+        $userVerify = UserEmailVerification::create([
+            'string' => $str,
+            'user_id'=> $user->id
+        ]);
+        \Mail::to($user->email)->queue(new Registration($user,$userVerify));
         return redirect('/users')->with('alert.success','User Added Successfully');
     }
     public function deleteUser($id){
@@ -78,7 +94,7 @@ class UsersController extends Controller
         $user->delete();
         return redirect('/users')->with('alert.success','User Deleted Successfully');
     }
-    public function postRegister(Request $request){
+    public function postRegister(RegisterRequest $request){
        $addressCompany = Address::create([
             'address'=>$request->input('address'),
             'address_2'=>$request->input('address'),
@@ -141,12 +157,12 @@ class UsersController extends Controller
         return view('user.userProfileEdit')->with(['user'=>$user]);
     }
     public function userProfilePostEdit(Request $request,$id){
-        $user = Users::find($id);
-        if($user->password != $request->input(['old_password'])){
-            dd("enter right password");
+        $user = auth()->user();
+        if(!auth()->attempt(['email' => $user->email, 'password' => $request->input('old_password')])){
+            return redirect()->back()->with('alert.danger', 'Please Enter Correct Information');
         }
-        $user->name = $request->input(['old_name']);
-        $user->password = Hash::make($request->input(['new_password']));
+        $user->name = $request->input(['name']);
+        $user->password = \Hash::make($request->input(['new_password']));
         $user->save();
         auth()->logout();
         return redirect('/login');

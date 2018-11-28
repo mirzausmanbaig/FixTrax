@@ -114,6 +114,19 @@
                 {{session()->get('alert.success')}}
             </div>
             @endif
+                @if(session()->has('alert.danger'))
+                    <div class="alert alert-danger alert-dismissible">
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        {{session()->get('alert.danger')}}
+                    </div>
+                @endif
+
+            @if($errors->any())
+                <div class="alert alert-danger alert-dismissible">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    {{ implode('', $errors->all(':message')) }}
+                </div>
+            @endif
             @yield('content')
 
         </div>
